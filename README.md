@@ -41,10 +41,10 @@ make clean
 
 ## Ejecución
 
-El programa recibe dos argumentos:
+El programa recibe la base con `-x` y el exponente con `-y`:
 
 ```bash
-./main <base> <exponente>
+./main -x <base> -y <exponente>
 ```
 
 Ambos argumentos deben ser números naturales.
@@ -52,7 +52,7 @@ Ambos argumentos deben ser números naturales.
 Ejemplo:
 
 ```bash
-./main 2 5
+./main -x 2 -y 5
 ```
 
 ## Salida

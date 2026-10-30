@@ -8,7 +8,6 @@ int Addition::evaluate(const int x, const int y) {
         return Projection::evaluate(0, x);
     }
     int new_y = y - 1; //s(y)
-    count++;
 
     int projection = Projection::evaluate(2, x, y, Addition::evaluate(x, new_y));
     return Successor::evaluate(projection);

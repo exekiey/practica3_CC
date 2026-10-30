@@ -10,7 +10,6 @@ int Power::evaluate(const int x, const int y) {
     }
 
     int new_y = y - 1; //s(y)
-    count++;
     
     int projection = Projection::evaluate(2, x, y, Power::evaluate(x, new_y));
     return Multiplication::evaluate(x, projection);
