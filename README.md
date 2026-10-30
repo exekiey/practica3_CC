@@ -1,75 +1,78 @@
-# Práctica 2 - Complejidad Computacional
+# Práctica 3 - Funciones Primitivas Recursivas
 
-Este proyecto implementa un simulador de una Máquina de Turing determinista (multicinta) en C++, diseñado bajo principios de orientación a objetos. El programa lee la configuración de una Máquina de Turing desde un fichero de texto, procesa cadenas de entrada y determina si son aceptadas o rechazadas, mostrando la evolución de la cinta y la posición de la cabeza de lectura/escritura.
+## Descripción
 
-## Funcionalidades
+Implementación de la función potencia mediante Funciones Primitivas Recursivas (FPR), utilizando las funciones básicas, composición y recursión primitiva.
 
-- Lectura y movimientos simultáneos
-- Movimientos: L, R y S
-- Cinta infinita en ambas direcciones
-## Máquinas de Turing diseñadas
+La función implementada es:
 
-El proyecto incluye la definición y los grafos de las siguientes Máquinas de Turing:
+```Power(x,y)=x^y```
 
-1. Reconocimiento del lenguaje L = { a^n b^m | m >= n, n > 0 }
-   - Fichero de configuración: ```turing_machines/Design1.txt```
-   ![MT1](turing_machines/Design1.png)
-2. Transformación de cadenas de a y b a recuento 1^n (con separador 0 en ausencia)
-   - Fichero de configuración: ```turing_machines/Design2.txt```
-   ![MT1](turing_machines/Design2.png)
+## Funciones implementadas
 
-## Estructura del Proyecto
+El programa utiliza las siguientes funciones:
 
-- main.cpp: Punto de entrada del programa y gestor de argumentos por línea de comandos.
-- include/: Carpeta contenedora de los archivos de cabecera (.h).
-- reader.cpp: Módulo de lectura y validación de la configuración de la MT y de los ficheros de entrada.
-- solver.cpp: Lógica de resolución y motor de ejecución de las transiciones de la máquina.
-- tape.cpp: Implementación de la cinta bidireccional infinita mediante estructura de nodos doblemente enlazados.
-- state.cpp: Representación formal de los estados de la máquina.
-- symbol.cpp: Representación de los símbolos del alfabeto y gestión del símbolo blanco.
-- transition.cpp: Definición formal de las funciones de transición.
-- tools.cpp: Funciones auxiliares de procesamiento de cadenas y tokens.
-- Makefile: Automatización de la compilación del proyecto (genera los objetos en build/).
-- automata.txt: Configuración de la MT para el Problema 1.
-- automata2.txt: Configuración de la MT para el Problema 2.
-- input.txt: Ejemplo de cadenas de entrada a comprobar.
+- **Zero:** función constante que devuelve 0.
+- **Successor:** devuelve el sucesor de un número natural.
+- **Projection:** devuelve uno de los argumentos recibidos.
+- **One:** función constante que devuelve 1.
+- **Addition:** suma dos números naturales mediante recursión primitiva.
+- **Multiplication:** multiplica dos números naturales mediante recursión primitiva.
+- **Power:** calcula la potencia mediante recursión primitiva.
 
+## Requisitos
 
-## Formato del Fichero de Configuración
-
-El archivo de configuración sigue la estructura especificada, admitiendo comentarios mediante #:
-```
-# Comentarios explicativos
-q1 q2 q3        # Conjunto de estados Q
-a b             # Alfabeto de entrada Sigma
-a b _           # Alfabeto de cinta Gamma (incluyendo el símbolo blanco)
-q1              # Estado inicial s
-_               # Símbolo blanco (b)
-q3              # Estados finales F
-1               # Número de cintas
-q1 a q2 b R     # Transición: delta(q1, a) = (q2, b, R)
-```
+- Compilador compatible con C++17.
+- GNU Make.
 
 ## Compilación
 
-Para compilar el proyecto y generar el ejecutable main, ejecute desde la raíz del proyecto:
-```
+Para compilar el programa:
+
+```bash
 make
 ```
-Para limpiar los ficheros objeto generados y el ejecutable:
-```
+
+Para eliminar los archivos generados:
+
+```bash
 make clean
 ```
 
 ## Ejecución
 
-El programa acepta las siguientes opciones por línea de comandos:
+El programa recibe dos argumentos:
 
-- ```-config <f>```: Fichero de texto con la configuración de la MT (obligatorio).
-- ```-in <f>```: Fichero de texto con las cadenas de entrada a comprobar (opcional).
+```bash
+./main <base> <exponente>
+```
 
-### Ejemplos de ejecución:
+Ambos argumentos deben ser números naturales.
 
-Ejecución con fichero de entradas:
+Ejemplo:
 
-```./main -config automata.txt -in input.txt```
+```bash
+./main 2 5
+```
+
+## Salida
+
+El programa muestra dos valores:
+
+1. El resultado de elevar la base al exponente.
+2. El número de invocaciones teóricas de las funciones primitivas recursivas.
+
+Ejemplo:
+
+```text
+32
+[conteo de invocaciones]
+```
+
+## Estructura del proyecto
+
+- `include/`: archivos de cabecera (`.h`) y plantillas (`.tpp`).
+- Archivos `.cpp`: implementaciones de las funciones.
+- `build/`: archivos objeto generados durante la compilación.
+- `main.cpp`: punto de entrada del programa.
+- `Makefile`: automatización de la compilación.
