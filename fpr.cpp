@@ -1,4 +1,7 @@
-class FPR {
-public:
-    virtual T evaluate(Args... args) = 0;
-};
+#include "fpr.h"
+
+int FPR::count = 0;
+
+int FPR::getCount() {
+    return count;
+}

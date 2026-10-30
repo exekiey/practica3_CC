@@ -1,7 +1,9 @@
-class One : public FPR {
-    T evaluate(Args... args) override {
-        int zero = zero.evaluate(args[0]);
-        return succesor.evaluate(zero);
+#include "one.h"
+#include "projection.h"
+#include "successor.h"
 
-    }
-};
+int One::evaluate(int x) {
+    count++;
+    int zero = Zero::evaluate(x);
+    return Successor::evaluate(zero);
+}

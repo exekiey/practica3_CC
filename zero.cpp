@@ -1,5 +1,7 @@
-class Zero : public FPR {
-    T evaluate(Args... args) override {
-        return 0;
-    }
-};
+#include "fpr.h"
+#include "zero.h"
+
+int Zero::evaluate(int x) {
+    count++;
+    return 0;
+}
